@@ -10,10 +10,22 @@ class window.App extends Backbone.Model
     # call methods from the new game object on dealer hand and
     # player hand to make changes to the current game.
     @get 'playerHand'
-      .on 'add', => @bustCheck()
+      .on 'add', => @bustCheck('playerHand')
 
-  bustCheck: ->
-    @get('game').bust(@get('playerHand').scores())
+    @get 'game'
+      .on 'playerHandbust', => alert('player bust'); @trigger('gameOver')
+
+    @get 'game'
+      .on 'dealerHandbust', => alert('dealer bust'); @trigger('gameOver')
+
+    @get 'playerHand'
+      .on 'add stand', => @get('game').dealerTurn(@get('dealerHand').dealerScores());
+
+    @get 'game'
+      .on 'hit', => @get('dealerHand').hit(); @bustCheck('dealerHand')
+
+  bustCheck: (player) ->
+    if player is 'playerHand' then @get('game').bust(@get(player).scores(), player) else @get('game').bust(@get(player).dealerScores(), player)
 
 
 

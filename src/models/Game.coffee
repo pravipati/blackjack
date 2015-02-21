@@ -1,10 +1,7 @@
 class window.Game extends Backbone.Model
 
-  bust: (array)->
-    if array[0] > 21 and array[1] > 21 then console.log('bust')
+  bust: (scores, player)->
+    if scores[0] > 21 and scores[1] > 21 then @trigger(player + 'bust', @)
 
-
-
-# @get 'playerHand'
-    #   .on 'hit', => alert 'success!', @
-    #
+  dealerTurn:(scores) ->
+    if scores[0] < 17 and scores[1] < 17 then @trigger('hit', @)
