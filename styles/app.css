@@ -1,16 +1,33 @@
+body {
+  background-color: ghostwhite;
+  font-family: 'Montserrat', sans-serif;
+}
+
 .card {
   float: left;
   border: solid 1px black;
-  width: 100px;
+  width: 140px;
   border-radius: 5px;
-  height: 140px;
+  height: 180px;
   margin-right: 20px;
+  text-align: center;
+  padding-top: 15px;
+  background-color: black;
+  color: white;
 }
 
 .covered {
-  background-color: black;
+  background-color: white;
+  color: white;
 }
 
 .hand {
   overflow: auto;
+}
+
+button {
+  color: #fff;
+  background-color: #6496c8;
+  text-shadow: -1px 1px #417cb8;
+  border: none;
 }
