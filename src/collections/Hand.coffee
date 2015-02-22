@@ -22,12 +22,26 @@ class window.Hand extends Backbone.Collection
   , 0
 
   dealerScores: ->
-    [@dealerMinScore(), @dealerMinScore() + 10 * @hasAce()]
+    scoresArray = [@dealerMinScore(), @dealerMinScore() + 10 * @hasAce()]
+    if scoresArray.length == 2
+      if scoresArray[0] > scoresArray[1] and scoresArray[0] <= 21
+        scoresArray[0]
+      else
+        scoresArray[1]
+    else
+      scoresArray[0]
 
   scores: ->
     # The scores are an array of potential scores.
     # Usually, that array contains one element. That is the only score.
     # when there is an ace, it offers you two scores - the original score, and score + 10.
-    [@minScore(), @minScore() + 10 * @hasAce()]
+    scoresArray = [@minScore(), @minScore() + 10 * @hasAce()]
+    if scoresArray.length == 2
+      if scoresArray[0] > scoresArray[1] and scoresArray[0] <= 21
+        scoresArray[0]
+      else
+        scoresArray[1]
+    else
+      scoresArray[0]
 
 

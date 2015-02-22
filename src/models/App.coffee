@@ -27,5 +27,9 @@ class window.App extends Backbone.Model
   bustCheck: (player) ->
     if player is 'playerHand' then @get('game').bust(@get(player).scores(), player) else @get('game').bust(@get(player).dealerScores(), player)
 
-
-
+  winnerCheck: (playerScore, dealerScore) ->
+    if playerScore > dealerScore
+     alert 'Player Wins!'
+    else if playerScore == dealerScore
+      alert 'Push!'
+    else alert 'Dealer Wins!'
